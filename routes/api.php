@@ -31,8 +31,6 @@ Route::middleware('auth:api')->get('/user' ,function (Request $request) {
 Route::prefix('auth')->group(function(){
     Route::post('register', 'AuthenticatorController@register');
     Route::post('login', 'AuthenticatorController@login');
-
-
     Route::middleware('auth:api')->group(function(){
         Route::post('logout', 'AuthenticatorController@logout');
         //Route::get('/list', 'HomeController@listAll');
