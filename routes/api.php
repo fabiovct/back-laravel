@@ -39,11 +39,18 @@ Route::prefix('auth')->group(function(){
     });
 });
 
-Route::get('/list', 'HomeController@listAll');
+//Route::get('/list', 'HomeController@listAll');
+Route::prefix('product')->group(function(){
+    Route::post('/create', 'ProductsController@createProduct');
+    Route::post('/delete/{productId}', 'ProductsController@deleteProduct');
+    Route::post('/update/{productId}', 'ProductsController@updateProduct');
+    Route::get('/list-products', 'ProductsController@listProducts');
 
-Route::get('products', 'ProductsController@index')
-    ->middleware('auth:api')
-    ;
+});
+
+//Route::get('products', 'ProductsController@index')
+    //->middleware('auth:api')
+    //;
 
 
 
