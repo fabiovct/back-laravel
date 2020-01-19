@@ -39,10 +39,10 @@ Route::prefix('auth')->group(function(){
 
 //Route::get('/list', 'HomeController@listAll');
 Route::prefix('product')->group(function(){
-    Route::post('/create', 'ProductsController@createProduct');
-    Route::post('/delete/{productId}', 'ProductsController@deleteProduct');
-    Route::post('/update/{productId}', 'ProductsController@updateProduct');
-    Route::get('/list-products', 'ProductsController@listProducts');
+    Route::post('/create', 'ProductsController@createProduct')->middleware('auth:api');
+    Route::post('/delete/{productId}', 'ProductsController@deleteProduct')->middleware('auth:api');
+    Route::post('/update/{productId}', 'ProductsController@updateProduct')->middleware('auth:api');
+    Route::get('/list-products', 'ProductsController@listProducts')->middleware('auth:api');
 
 });
 
