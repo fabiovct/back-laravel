@@ -14,28 +14,37 @@ use Illuminate\Http\Request;
 */
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
-  //  return $request->user();
+   //return $request->user();
 //});
 
 //Route::post('/login', 'LoginController@login');
 
 
-Route::middleware('auth:api')->get('/user' ,function (Request $request) {
+//Route::middleware('auth:api')->get('/user' ,function (Request $request) {
 
-    return $request->user();
+    //return $request->user();
 //Route::middleware('scopes:user')->get('me', 'Auth\AuthController@details');
 
 
-});
+//});
+//Route::group([
+  //  'middleware' => 'auth:api',
+//], function (){
 
-Route::prefix('auth')->group(function(){
+
+
+//Route::prefix('auth')->group(function(){
     Route::post('register', 'AuthenticatorController@register');
     Route::post('login', 'AuthenticatorController@login');
+
     Route::middleware('auth:api')->group(function(){
+
         Route::post('logout', 'AuthenticatorController@logout');
+
         //Route::get('/list', 'HomeController@listAll');
     });
-});
+//});
+//});
 
 //Route::get('/list', 'HomeController@listAll');
 Route::prefix('product')->group(function(){

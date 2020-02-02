@@ -66,13 +66,14 @@ class AuthenticatorController extends Controller
 
     public function login(Request $request) {
         $validator = Validator::make($request->all(),[
-            'email' => 'required|string|email',
-            'password' => 'required|string'
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 401);
         }
+
 
         $validators = [
             'email'=> $request->email,
@@ -81,7 +82,7 @@ class AuthenticatorController extends Controller
 
         if(!Auth::attempt($validators))
         return response()->json([
-            'res' => 'Acesso negado'
+            'error' => 'Acesso negado'
         ], 401);
 
         $user = $request->user();
