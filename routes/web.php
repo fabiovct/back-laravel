@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/error', 'AuthenticatorController@error')->name('error');
 
 Auth::routes();
 

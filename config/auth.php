@@ -46,6 +46,7 @@ return [
             //token
             'provider' => 'users',
             'hash' =>false,
+            'expire' => 1,
         ],
     ],
 

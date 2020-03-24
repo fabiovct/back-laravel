@@ -36,37 +36,19 @@ use Illuminate\Http\Request;
 //Route::prefix('auth')->group(function(){
     Route::post('register', 'AuthenticatorController@register');
     Route::post('login', 'AuthenticatorController@login');
+    Route::get('error', 'AuthenticatorController@error');
+
 
     Route::middleware('auth:api')->group(function(){
-
         Route::post('logout', 'AuthenticatorController@logout');
-
-        //Route::get('/list', 'HomeController@listAll');
     });
-//});
-//});
-
-//Route::get('/list', 'HomeController@listAll');
 Route::prefix('product')->group(function(){
     Route::post('/create', 'ProductsController@createProduct')->middleware('auth:api');
     Route::post('/delete/{productId}', 'ProductsController@deleteProduct')->middleware('auth:api');
     Route::post('/update/{productId}', 'ProductsController@updateProduct')->middleware('auth:api');
     Route::get('/list-products', 'ProductsController@listProducts')->middleware('auth:api');
+    Route::get('/{productId}', 'ProductsController@selectProductById')->middleware('auth:api');
 
 });
-
-//Route::get('products', 'ProductsController@index')
-    //->middleware('auth:api')
-    //;
-
-
-
-//Route::get('/list', 'HomeController@listAll')
-//->middleware('auth:api');;
-
-
-//Route::get('/a', function(){
-    //return 'API';
-//});
 
 

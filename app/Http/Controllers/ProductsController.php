@@ -72,9 +72,11 @@ public function updateProduct(Request $request, $productId) {
             "error" => $e,
         ]);
     }
-
-
 }
 
+public function selectProductById(Request $request){
+    $products = Product::where('id', '=', $request['productId']);
+    return $products->get();
+}
 
 }

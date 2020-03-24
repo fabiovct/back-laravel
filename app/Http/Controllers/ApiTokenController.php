@@ -19,6 +19,7 @@ class ApiTokenController extends Controller
 
         $request->user()->forceFill([
             'api_token' => hash('sha256', $token),
+            //'api_token' => $token,
         ])->save();
 
         return ['token' => $token];

@@ -93,10 +93,16 @@ class AuthenticatorController extends Controller
         ], 200);
 
     }
+
     public function logout(Request $request) {
-        $request->user()->token()->revoke();
+        $request->user()->token()->delete();
         return response()->json([
             'res'=>'Deslogado com sucesso'
         ]);
+    }
+
+    public function error() {
+        return response()->json([
+            'token'=>false]);
     }
 }
